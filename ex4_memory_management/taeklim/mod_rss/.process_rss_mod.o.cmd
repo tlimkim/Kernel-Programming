@@ -3,6 +3,7 @@ cmd_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod
 source_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o := /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.c
 
 deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o := \
+    $(wildcard include/config/shmem.h) \
   include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
     $(wildcard include/config/preempt/voluntary.h) \
@@ -744,7 +745,6 @@ deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mo
     $(wildcard include/config/device/private.h) \
     $(wildcard include/config/device/public.h) \
     $(wildcard include/config/fs/dax.h) \
-    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/page/poisoning.h) \
@@ -968,6 +968,56 @@ deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mo
   arch/x86/include/asm/hugetlb.h \
     $(wildcard include/config/arch/has/gigantic/page.h) \
   include/asm-generic/hugetlb.h \
+  include/linux/swap.h \
+    $(wildcard include/config/frontswap.h) \
+    $(wildcard include/config/memcg/swap.h) \
+  include/linux/memcontrol.h \
+  include/linux/page_counter.h \
+  include/linux/vmpressure.h \
+  include/linux/eventfd.h \
+    $(wildcard include/config/eventfd.h) \
+  include/linux/writeback.h \
+  include/linux/flex_proportions.h \
+  include/linux/backing-dev-defs.h \
+    $(wildcard include/config/debug/fs.h) \
+  include/linux/blk_types.h \
+    $(wildcard include/config/blk/dev/throttling/low.h) \
+    $(wildcard include/config/blk/dev/integrity.h) \
+  include/linux/bvec.h \
+  include/linux/bio.h \
+  include/linux/mempool.h \
+  include/linux/ioprio.h \
+  include/linux/sched/rt.h \
+  include/linux/iocontext.h \
+  include/linux/node.h \
+    $(wildcard include/config/memory/hotplug/sparse.h) \
+  include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/generic/msi/irq/domain.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/generic/msi/irq.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/of.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/klist.h \
+  include/linux/pinctrl/devinfo.h \
+    $(wildcard include/config/pm.h) \
+  include/linux/pinctrl/consumer.h \
+  include/linux/pinctrl/pinctrl-state.h \
+  include/linux/pm.h \
+    $(wildcard include/config/vt/console/sleep.h) \
+    $(wildcard include/config/pm/clk.h) \
+    $(wildcard include/config/pm/generic/domains.h) \
+  include/linux/ratelimit.h \
+  arch/x86/include/asm/device.h \
+    $(wildcard include/config/intel/iommu.h) \
+    $(wildcard include/config/amd/iommu.h) \
+    $(wildcard include/config/x86/dev/dma/ops.h) \
+    $(wildcard include/config/pci/domains.h) \
+  include/linux/pm_wakeup.h \
+  include/linux/swapops.h \
+  include/linux/page_idle.h \
 
 /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o: $(deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o)
 
