@@ -47,7 +47,6 @@ struct mem_size_stats {
     u64 swap_pss;
     bool check_shmem_swap;
 };
-
 static void smaps_account(struct mem_size_stats *mss, struct page *page,
 	bool compound, bool young, bool dirty);
 
@@ -215,7 +214,7 @@ static int __init proc_rss_entry(void)
     	struct vm_area_struct *mmap;
 	
 	struct mem_size_stats mss;
-//	char perm[16];
+	char perm[16];
 
         task = pid_task(find_vpid(pid), PIDTYPE_PID);
 
@@ -228,6 +227,54 @@ static int __init proc_rss_entry(void)
 //	    .hugetlb_entry = smaps_hugetlb_range,
 	    .mm = mmap->vm_mm,
 	    .private = &mss,
+	};
+
+	static const char mnemonics[BITS_PER_LONG][2] = {
+ 
+	    [0 ... (BITS_PER_LONG-1)] = "??", // in case of unknown
+	    [ilog2(VM_READ)]	= "rd",
+    	    [ilog2(VM_WRITE)]	= "wr",
+	    [ilog2(VM_EXEC)]	= "ex",
+	    [ilog2(VM_SHARED)]	= "sh",
+	    [ilog2(VM_MAYREAD)]	= "mr",
+	    [ilog2(VM_MAYWRITE)]    = "mw",
+    	    [ilog2(VM_MAYEXEC)]	= "me",
+    	    [ilog2(VM_MAYSHARE)]    = "ms",
+    	    [ilog2(VM_GROWSDOWN)]   = "gd",
+    	    [ilog2(VM_PFNMAP)]	= "pf",
+    	    [ilog2(VM_DENYWRITE)]   = "dw",
+#ifdef CONFIG_X86_INTEL_MPX
+    	    [ilog2(VM_MPX)]	= "mp",
+#endif
+    	    [ilog2(VM_LOCKED)]	= "lo",
+    	    [ilog2(VM_IO)]	= "io",
+    	    [ilog2(VM_SEQ_READ)]    = "sr",
+	    [ilog2(VM_RAND_READ)]   = "rr",
+	    [ilog2(VM_DONTCOPY)]    = "dc",
+    	    [ilog2(VM_DONTEXPAND)]  = "de",
+	    [ilog2(VM_ACCOUNT)]	= "ac",
+	    [ilog2(VM_NORESERVE)]   = "nr",
+    	    [ilog2(VM_HUGETLB)]	= "ht",
+    	    [ilog2(VM_SYNC)]	= "sf",
+    	    [ilog2(VM_ARCH_1)]	= "ar",
+    	    [ilog2(VM_WIPEONFORK)]  = "wf",
+    	    [ilog2(VM_DONTDUMP)]    = "dd",
+#ifdef CONFIG_MEM_SOFT_DIRTY
+    	    [ilog2(VM_SOFTDIRTY)]   = "sd",
+#endif
+    	    [ilog2(VM_MIXEDMAP)]    = "mm",
+    	    [ilog2(VM_HUGEPAGE)]    = "hg",
+    	    [ilog2(VM_NOHUGEPAGE)]  = "nh",
+    	    [ilog2(VM_MERGEABLE)]   = "mg",
+    	    [ilog2(VM_UFFD_MISSING)]= "um",
+    	    [ilog2(VM_UFFD_WP)]	= "uw",
+#ifdef CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS
+    	    /* These come out via ProtectionKey: */
+    	    [ilog2(VM_PKEY_BIT0)]   = "",
+    	    [ilog2(VM_PKEY_BIT1)]   = "",
+    	    [ilog2(VM_PKEY_BIT2)]   = "",
+    	    [ilog2(VM_PKEY_BIT3)]   = "",
+#endif
 	};
 
     	do {
@@ -272,6 +319,16 @@ static int __init proc_rss_entry(void)
 		   mss.swap >> 10,
 		   (unsigned long)(mss.swap_pss >> (10 + PSS_SHIFT)),
 		   (unsigned long)(mss.pss >> (10 + PSS_SHIFT)));
+	    	    
+	    printk("VMFlags: ");
+
+	    size_t i;
+
+	    for (i = 0; i < BITS_PER_LONG; i++) {
+		if (mmap->vm_flags & (1UL << i)) {
+		    printk(KERN_CONT "%c%c ", mnemonics[i][0], mnemonics[i][1]);
+		}
+	    }
 
        	} while((mmap = mmap->vm_next));
 

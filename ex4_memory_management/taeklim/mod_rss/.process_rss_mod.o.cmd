@@ -4,6 +4,9 @@ source_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/
 
 deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o := \
     $(wildcard include/config/shmem.h) \
+    $(wildcard include/config/x86/intel/mpx.h) \
+    $(wildcard include/config/mem/soft/dirty.h) \
+    $(wildcard include/config/x86/intel/memory/protection/keys.h) \
   include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
     $(wildcard include/config/preempt/voluntary.h) \
@@ -89,9 +92,7 @@ deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mo
     $(wildcard include/config/x86/5level.h) \
     $(wildcard include/config/paravirt.h) \
   arch/x86/include/asm/disabled-features.h \
-    $(wildcard include/config/x86/intel/mpx.h) \
     $(wildcard include/config/x86/intel/umip.h) \
-    $(wildcard include/config/x86/intel/memory/protection/keys.h) \
     $(wildcard include/config/page/table/isolation.h) \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/le.h \
@@ -260,7 +261,6 @@ deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mo
     $(wildcard include/config/debug/highmem.h) \
   include/asm-generic/kmap_types.h \
   arch/x86/include/asm/pgtable_types.h \
-    $(wildcard include/config/mem/soft/dirty.h) \
     $(wildcard include/config/proc/fs.h) \
   arch/x86/include/asm/pgtable_64_types.h \
   arch/x86/include/asm/sparsemem.h \
