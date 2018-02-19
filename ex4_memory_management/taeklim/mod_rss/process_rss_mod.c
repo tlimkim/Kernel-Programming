@@ -213,21 +213,8 @@ static int __init proc_rss_entry(void)
         struct task_struct *task;
 	struct mm_struct *mm;
     	struct vm_area_struct *mmap;
-//	struct file *file;
 	
 	struct mem_size_stats mss;
-/*
-       	struct mm_walk smaps_walk = {
-//	    .pmd_entry = smaps_pte_range,
-//	    .hugetlb_entry = smaps_hugetlb_range,
-	    .mm = mmap->vm_mm,
-	    .private = &mss,
-	};
-
-	memset(&mss, 0, sizeof(mss));	
-	
-	walk_page_range(mmap->vm_start, mmap->vm_end, &smaps_walk);
-*/
 //	char perm[16];
 
         task = pid_task(find_vpid(pid), PIDTYPE_PID);
@@ -243,23 +230,48 @@ static int __init proc_rss_entry(void)
 	    .private = &mss,
 	};
 
-//	memset(&mss, 0, sizeof(mss));	
-	
-//	walk_page_range(mmap->vm_start, mmap->vm_end, &smaps_walk);
-
     	do {
-	    printk("Size:	    %8lu kB \n"
-		   "KernelPageSize: %8lu kB \n"
-		   "MMUPageSize:    %8lu kB \n",
-		   ((mmap->vm_end - mmap->vm_start) >> 10),
-		   vma_kernel_pagesize(mmap) >> 10,
-		   vma_kernel_pagesize(mmap) >> 10); // MMU page size seems to be same as kernel page
-
 	    memset(&mss, 0, sizeof(mss));
 	    walk_page_vma(mmap, &smaps_walk);
-
-	    printk("done walking \n");
-	    printk("Rss:	    %8lu kB \n", mss.resident >> 10);
+	    
+	    printk("Size:	    %11lu kB \n"
+		   "KernelPageSize: %8lu kB \n"
+		   "MMUPageSize:    %8lu kB \n"
+		   "Rss:	    %11lu kB \n"
+		   "Pss:	    %11lu kB \n"
+		   "Shared_Clean:   %8lu kB \n"
+		   "Shared_Dirty:   %8lu kB \n"
+		   "Private_Clean:  %8lu kB \n"
+		   "Private_Dirty:  %8lu kB \n"
+		   "Referenced:	    %3lu kB \n"
+		   "Anonymous:	    %3lu kB \n"
+		   "LazyFree:	    %3lu kB \n"
+		   "AnonHugePages:  %8lu kB \n"
+		   "ShmemPmdMapped: %8lu kB \n"
+		   "Shared_Hugetlb: %8lu kB \n"
+		   "Private_Hugetlb:%8lu kB \n"
+		   "Swap:	    %11lu kB \n"
+		   "SwapPss:	    %11lu kB \n"
+		   "Locked:	    %11lu kB \n",
+		   ((mmap->vm_end - mmap->vm_start) >> 10),
+		   vma_kernel_pagesize(mmap) >> 10,
+		   vma_kernel_pagesize(mmap) >> 10, // MMU page size seems to be same as kernel page
+		   mss.resident >> 10,
+		   (unsigned long)(mss.pss >> (10 + PSS_SHIFT)),
+		   mss.shared_clean >> 10,
+		   mss.shared_dirty >> 10,
+		   mss.private_clean >> 10,
+		   mss.private_dirty >> 10,
+		   mss.referenced >> 10,
+		   mss.anonymous >> 10,
+		   mss.lazyfree >> 10,
+		   mss.anonymous_thp >> 10,
+		   mss.shmem_thp >> 10,
+		   mss.shared_hugetlb >> 10,
+		   mss.private_hugetlb >> 10,
+		   mss.swap >> 10,
+		   (unsigned long)(mss.swap_pss >> (10 + PSS_SHIFT)),
+		   (unsigned long)(mss.pss >> (10 + PSS_SHIFT)));
 
        	} while((mmap = mmap->vm_next));
 
