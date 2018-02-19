@@ -1,8 +1,8 @@
-cmd_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o := gcc -Wp,-MD,/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/.process_rss_mod.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-var-tracking-assignments -g -gdwarf-4 -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"process_rss_mod"'  -DKBUILD_MODNAME='"process_rss_mod"' -c -o /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/.tmp_process_rss_mod.o /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.c
+cmd_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.o := gcc -Wp,-MD,/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/.process_mem_mod.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-var-tracking-assignments -g -gdwarf-4 -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"process_mem_mod"'  -DKBUILD_MODNAME='"process_mem_mod"' -c -o /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/.tmp_process_mem_mod.o /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.c
 
-source_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o := /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.c
+source_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.o := /home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.c
 
-deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o := \
+deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.o := \
   include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
     $(wildcard include/config/preempt/voluntary.h) \
@@ -842,133 +842,7 @@ deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mo
   include/linux/vm_event_item.h \
     $(wildcard include/config/memory/balloon.h) \
     $(wildcard include/config/balloon/compaction.h) \
-  include/linux/seq_file.h \
-  include/linux/cred.h \
-    $(wildcard include/config/debug/credentials.h) \
-    $(wildcard include/config/keys.h) \
-  include/linux/key.h \
-  include/linux/assoc_array.h \
-    $(wildcard include/config/associative/array.h) \
-  include/linux/selinux.h \
-    $(wildcard include/config/security/selinux.h) \
-  include/linux/sched/user.h \
-    $(wildcard include/config/fanotify.h) \
-    $(wildcard include/config/posix/mqueue.h) \
-    $(wildcard include/config/bpf/syscall.h) \
-    $(wildcard include/config/net.h) \
-  include/linux/hugetlb.h \
-    $(wildcard include/config/cgroup/hugetlb.h) \
-    $(wildcard include/config/arch/enable/hugepage/migration.h) \
-  include/linux/hugetlb_inline.h \
-  include/linux/cgroup.h \
-    $(wildcard include/config/cgroup/cpuacct.h) \
-    $(wildcard include/config/sock/cgroup/data.h) \
-    $(wildcard include/config/cgroup/net/prio.h) \
-    $(wildcard include/config/cgroup/net/classid.h) \
-    $(wildcard include/config/cgroup/data.h) \
-  include/uapi/linux/cgroupstats.h \
-  include/uapi/linux/taskstats.h \
-  include/linux/ns_common.h \
-  include/linux/nsproxy.h \
-  include/linux/user_namespace.h \
-    $(wildcard include/config/inotify/user.h) \
-    $(wildcard include/config/persistent/keyrings.h) \
-  include/linux/kernel_stat.h \
-  include/linux/interrupt.h \
-    $(wildcard include/config/irq/forced/threading.h) \
-    $(wildcard include/config/generic/irq/probe.h) \
-    $(wildcard include/config/irq/timings.h) \
-  include/linux/irqreturn.h \
-  include/linux/irqnr.h \
-  include/uapi/linux/irqnr.h \
-  include/linux/hardirq.h \
-  include/linux/ftrace_irq.h \
-    $(wildcard include/config/ftrace/nmi/enter.h) \
-    $(wildcard include/config/hwlat/tracer.h) \
-  include/linux/vtime.h \
-    $(wildcard include/config/virt/cpu/accounting.h) \
-    $(wildcard include/config/irq/time/accounting.h) \
-  include/linux/context_tracking_state.h \
-    $(wildcard include/config/context/tracking.h) \
-  arch/x86/include/asm/hardirq.h \
-    $(wildcard include/config/x86/thermal/vector.h) \
-    $(wildcard include/config/x86/mce/threshold.h) \
-    $(wildcard include/config/x86/mce/amd.h) \
-    $(wildcard include/config/hyperv.h) \
-  include/linux/irq.h \
-    $(wildcard include/config/generic/irq/effective/aff/mask.h) \
-    $(wildcard include/config/generic/irq/ipi.h) \
-    $(wildcard include/config/irq/domain/hierarchy.h) \
-    $(wildcard include/config/generic/irq/migration.h) \
-    $(wildcard include/config/generic/pending/irq.h) \
-    $(wildcard include/config/hardirqs/sw/resend.h) \
-    $(wildcard include/config/generic/irq/legacy/alloc/hwirq.h) \
-    $(wildcard include/config/generic/irq/legacy.h) \
-  include/linux/irqhandler.h \
-  include/linux/io.h \
-  include/linux/slab.h \
-    $(wildcard include/config/debug/slab.h) \
-    $(wildcard include/config/failslab.h) \
-    $(wildcard include/config/have/hardened/usercopy/allocator.h) \
-    $(wildcard include/config/slab.h) \
-    $(wildcard include/config/slub.h) \
-  include/linux/kmemleak.h \
-  include/linux/kasan.h \
-  arch/x86/include/asm/irq.h \
-  arch/x86/include/asm/irq_regs.h \
-  include/linux/irqdesc.h \
-    $(wildcard include/config/irq/preflow/fasteoi.h) \
-    $(wildcard include/config/generic/irq/debugfs.h) \
-    $(wildcard include/config/sparse/irq.h) \
-    $(wildcard include/config/handle/domain/irq.h) \
-  arch/x86/include/asm/hw_irq.h \
-    $(wildcard include/config/hpet/timer.h) \
-    $(wildcard include/config/dmar/table.h) \
-    $(wildcard include/config/x86/uv.h) \
-    $(wildcard include/config/vmd.h) \
-  include/linux/profile.h \
-    $(wildcard include/config/profiling.h) \
-  arch/x86/include/asm/sections.h \
-  include/asm-generic/sections.h \
-  arch/x86/include/asm/extable.h \
-  include/linux/cgroup-defs.h \
-  include/linux/u64_stats_sync.h \
-  include/linux/bpf-cgroup.h \
-    $(wildcard include/config/cgroup/bpf.h) \
-  include/uapi/linux/bpf.h \
-    $(wildcard include/config/efficient/unaligned/access.h) \
-  include/uapi/linux/bpf_common.h \
-  include/linux/cgroup_subsys.h \
-    $(wildcard include/config/blk/cgroup.h) \
-    $(wildcard include/config/cgroup/device.h) \
-    $(wildcard include/config/cgroup/freezer.h) \
-    $(wildcard include/config/cgroup/perf.h) \
-    $(wildcard include/config/cgroup/pids.h) \
-    $(wildcard include/config/cgroup/rdma.h) \
-    $(wildcard include/config/cgroup/debug.h) \
-  include/linux/mempolicy.h \
-    $(wildcard include/config/tmpfs.h) \
-  include/linux/dax.h \
-    $(wildcard include/config/dax.h) \
-  include/linux/pagemap.h \
-  include/linux/highmem.h \
-  include/linux/uaccess.h \
-  include/linux/kasan-checks.h \
-  arch/x86/include/asm/uaccess.h \
-    $(wildcard include/config/x86/intel/usercopy.h) \
-  arch/x86/include/asm/smap.h \
-    $(wildcard include/config/x86/smap.h) \
-  arch/x86/include/asm/uaccess_64.h \
-  arch/x86/include/asm/cacheflush.h \
-  include/asm-generic/cacheflush.h \
-  include/uapi/linux/mempolicy.h \
-  arch/x86/include/asm/tlbflush.h \
-  arch/x86/include/asm/invpcid.h \
-  arch/x86/include/asm/pti.h \
-  arch/x86/include/asm/hugetlb.h \
-    $(wildcard include/config/arch/has/gigantic/page.h) \
-  include/asm-generic/hugetlb.h \
 
-/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o: $(deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o)
+/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.o: $(deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.o)
 
-$(deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_rss/process_rss_mod.o):
+$(deps_/home/tlimkim/workspace/kernel_programming/ex4_memory_management/taeklim/mod_mem/process_mem_mod.o):
