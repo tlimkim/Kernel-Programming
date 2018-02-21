@@ -20,10 +20,6 @@ static int __init proc_mem_entry(void)
     struct file *file;
 
     char perm[16];
-    
-    //unsigned long long pgoff = 0;
-    //unsigned long ino = 0;
-    //dev_t dev = 0;    
 
     task = pid_task(find_vpid(pid), PIDTYPE_PID);
 

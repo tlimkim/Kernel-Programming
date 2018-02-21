@@ -4,7 +4,7 @@
 #include <linux/init.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("ajou.ac.kr");
+MODULE_AUTHOR("tlimkim");
 
 //struct task_struct *proc = current;
 
