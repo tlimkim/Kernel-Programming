@@ -13,13 +13,15 @@ MODULE_LICENSE("GPL");
 
 void ** sys_call_table;
 
-asmlinkage int (*original_call) (const char*, int, int);
+asmlinkage int (*original_call) (pid_t pid, int address);
 
-asmlinkage int our_call (const char* file, int flags, int mode)
+asmlinkage int our_call (pid_t pid, int address)
 {
+
     printk("Intercepted my_syscall \n");
+    printk("pid: %d address: %x \n", pid, address);
+//    return 0;
     return 0;
-    //return original_call(file, flags, mode);
 }
 
 void set_addr_rw(unsigned long addr)
@@ -43,6 +45,9 @@ static int __init intercept_entry (void)
     set_addr_rw(sys_call_table);
 
     sys_call_table[333] = our_call;
+
+    printk("pid: %d \n", pid);
+
     return 0;
 }   
 

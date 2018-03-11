@@ -4,6 +4,9 @@
 
 int main (void) 
 {
-    syscall(333);
+    pid_t pid = 1231;
+    int address = 0x1234;
+
+    syscall(333, pid, address);
     return 0;
 }
