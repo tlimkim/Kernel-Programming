@@ -330,6 +330,8 @@ static int __init proc_rss_entry(void)
 		}
 	    }
 
+	    printk("\n");
+
        	} while((mmap = mmap->vm_next));
 
 	return 0;

@@ -73,7 +73,7 @@ static int __init proc_mem_entry(void)
 	    strcpy(path, "[stack]");
 	}
 
-	printk("%lx - %lx %c%c%c%c %08llx %02x:%02x %lu \t %s",		
+	printk("%lx - %lx %c%c%c%c %08llx %02x:%02x %lu \t %s \n",		
 		mmap->vm_start, mmap->vm_end,
 	       	perm[0], perm[1], perm[2], perm[3], 
 		pgoff, 
