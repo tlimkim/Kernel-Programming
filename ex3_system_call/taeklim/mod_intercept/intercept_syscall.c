@@ -1,4 +1,6 @@
 #include <linux/mm.h>
+#include <linux/sched.h>
+#include <linux/init.h>
 #include <asm/pgtable.h>
 #include <linux/moduleparam.h>
 #include <linux/kernel.h>
@@ -10,17 +12,36 @@
 #include <linux/kallsyms.h>
 
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("tlimkim");
 
 void ** sys_call_table;
+
+pid_t pid_mod;
+int address_mod;
 
 asmlinkage int (*original_call) (pid_t pid, int address);
 
 asmlinkage int our_call (pid_t pid, int address)
 {
+    struct task_struct *task;
+    struct mm_struct *mm;
+    struct vm_area_struct *mmap;
 
     printk("Intercepted my_syscall \n");
     printk("pid: %d address: %x \n", pid, address);
-//    return 0;
+    
+    pid = 1;
+
+    task = pid_task(find_vpid(pid), PIDTYPE_PID);
+    
+    mm = task->mm;
+    mmap = mm->mmap;
+
+    do {
+
+	printk("vm address range: %lx - %lx \n", mmap->vm_start, mmap->vm_end);
+    } while((mmap = mmap->vm_next));
+
     return 0;
 }
 
@@ -46,7 +67,7 @@ static int __init intercept_entry (void)
 
     sys_call_table[333] = our_call;
 
-    printk("pid: %d \n", pid);
+    printk("pid: %d \n", pid_mod);
 
     return 0;
 }   
