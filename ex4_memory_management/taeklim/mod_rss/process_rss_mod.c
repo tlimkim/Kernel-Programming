@@ -17,14 +17,27 @@
 #include <linux/mm_types.h>
 #include <linux/page_idle.h>
 
+#include <linux/list.h> // LIST_HEAD()
+#include <linux/pagemap.h> // lock_page()
+
+// these headers are for __set_page_dirty_buffers()
+#include <linux/buffer_head.h> 
+#include <linux/fs.h>
+
 #define PSS_SHIFT 12
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("tlimkim");
 
-static int pid = 1;
+static int pid = 1994;
 
 module_param (pid, int, 0);
+
+/*
+struct list_head {
+    struct list_head *next, *prev;
+};
+*/
 
 struct mem_size_stats {
     bool first;
@@ -91,10 +104,21 @@ static void smaps_pte_entry(pte_t *pte, unsigned long addr,
     struct mem_size_stats *mss = walk->private;
     struct vm_area_struct *vma = walk->vma;
     struct page *page = NULL;
+    struct list_head *page_list;
+
+//    LIST_HEAD(page_list);
 
     if (pte_present(*pte)) {
 	page = vm_normal_page(vma, addr, *pte);
+	if (page != NULL) {
+	    lock_page(page);
+	    add_to_swap(page);
+	    unlock_page(page);
+	    printk("swapped \n");
+	}
+
     } else if (is_swap_pte(*pte)) {
+	printk("entered is swap pte \n");
 	swp_entry_t swpent = pte_to_swp_entry(*pte);
 
 	if (!non_swap_entry(swpent)) {
@@ -116,6 +140,7 @@ static void smaps_pte_entry(pte_t *pte, unsigned long addr,
 	    page = device_private_entry_to_page(swpent);
     } else if (unlikely(IS_ENABLED(CONFIG_SHMEM) && mss->check_shmem_swap
 		&& pte_none(*pte))) {
+	printk("entered && \n");
 	page = find_get_entry(vma->vm_file->f_mapping,
 		linear_page_index(vma, addr));
 	if (!page)
@@ -131,7 +156,7 @@ static void smaps_pte_entry(pte_t *pte, unsigned long addr,
 
     if (!page)
 	return;
-
+    //printk("before get into smaps_accoutn \n");
     smaps_account(mss, page, false, pte_young(*pte), pte_dirty(*pte));
 }
 
@@ -154,6 +179,8 @@ static void smaps_pmd_entry(pmd_t *pmd, unsigned long addr,
 	/* pass */;
     else
 	VM_BUG_ON_PAGE(1, page);
+
+    //printk("before get into smaps_account \n");
     smaps_account(mss, page, true, pmd_young(*pmd), pmd_dirty(*pmd));
 }
 
@@ -214,7 +241,6 @@ static int __init proc_rss_entry(void)
     	struct vm_area_struct *mmap;
 	
 	struct mem_size_stats mss;
-	char perm[16];
 
         task = pid_task(find_vpid(pid), PIDTYPE_PID);
 
