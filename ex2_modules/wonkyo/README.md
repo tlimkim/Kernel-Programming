@@ -108,19 +108,23 @@ $ make test
 
 ```c
 /* simple-5.c */
+
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/stat.h>
+
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Wonkyo Choe");
+
 static short int myshort = 1;
 static int myint = 420;
 static long int mylong = 9999;
 static char *mystring = "blah";
-static int myintArray[2] = { −1, −1 };
+static int myintArray[2] = { -1, -1 };
 static int arr_argc = 0;
+
 /*
  * module_param(foo, int, 0000)
  * The first param is the parameters name
@@ -136,6 +140,7 @@ module_param(mylong, long, S_IRUSR);
 MODULE_PARM_DESC(mylong, "A long integer");
 module_param(mystring, charp, 0000);
 MODULE_PARM_DESC(mystring, "A character string");
+
 /*
  * module_param_array(name, type, num, perm);
  * The first param is the parameter's (in this case the array's) name
